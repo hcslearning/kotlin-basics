@@ -58,8 +58,17 @@ val edad4:Byte  = 35 // 08 bits | -2**7 - 2**7-1   |                       -128 
 ### Floating Point Numbers
 
 ```kotlin
+val peso:Double = 70.5  // MIN: 4.9E-324 | MAX: 1.7976931348623157E308
+val peso2:Float = 70.5f // MIN: 1.4E-45  | MAX: 3.4028235E38
+
+// Float MIN: 0.000000000000000000000000000000000000000000001401298464324817
+System.out.printf( "%.100f", Float.MIN_VALUE)
+// Float MAX: 340282346638528860000000000000000000000.0 
+System.out.printf( "%.100f", Float.MAX_VALUE)
 
 ```
+
+
 
 #### IEEE754 32 bits (example)
 
