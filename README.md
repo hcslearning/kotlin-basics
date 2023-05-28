@@ -69,13 +69,26 @@ val edad4:Byte  = 35 // 08 bits | -2**7 - 2**7-1   |                       -128 
 
 ```kotlin
 val numeroDecimal = 10.5f
-// "1000001001010000000000000000000"
-// "01000001001010000000000000000000"
-val representacionBinaria = Integer.toBinaryString( numeroDecimal.toRawBits() )
-val representacionBinariaStr = String.format("%32s", representacionBinaria).replace(" ", "")
+val representacionBinaria = Integer.toBinaryString( numeroDecimal.toRawBits() ).padStart(32, '0')
+// 01000001001010000000000000000000
 
-println(representacionBinariaStr)
+// signo = + (porque el primer dígito es 0)
+val signo = if (representacionBinaria[0] == '0') "+" else "-"
+ 
+// exponente - 127 (8 bits sgtes) 
+// exponente = 130 - 127 = 3
+val exponenteBin = representacionBinaria.substring(1, 9)
+val exponenteDec = exponenteBin.toInt(2)
+val exponenteCalc = exponenteDec - 127
 
-firstBit = 0 // positivo 
-exponentBin = "10000010"
+// mantisa (23 bits)
+val mantisaBin = representacionBinaria.substring(10, 32).padStart(23, '0')
+// 01010000000000000000000
+var mantisaDec = 1.0 // por fórmula parte en 1
+for (i in 0 until mantisaBin.length) {
+    if (mantisaBin[i] == '0') continue
+    mantisaDec += mantisaBin[i].toString().toInt(2) * ( 1/Math.pow(2.0, (i+1).toDouble()) )
+}
+
+val resultado = mantisaDec * Math.pow(2.0, exponenteCalc.toDouble()) //10.5
 ```
