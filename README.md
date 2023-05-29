@@ -122,3 +122,60 @@ val oneMillion  = 1_000_000  // integer
 val colorHex    = 0xFF_00_CC // ej: new java.awt.Color(colorHex)
 val dos         = 0b00000000_00000010 // 2 en bytes
 ```
+
+### String Templates
+
+```kotlin
+val nombre = "Juan"
+val mensaje = """
+Querido $nombre,
+Nos comunicamos con ud. por el motivo ...
+El nombre con largo ${nombre.length}
+"""
+```
+
+### Conditionals
+
+#### if / else 
+
+```kotlin
+import java.time.LocalDate
+import java.time.DayOfWeek
+
+val hoy = LocalDate.now().dayOfWeek
+if( hoy.equals(DayOfWeek.SUNDAY) ) {
+    println("Hoy se descansa!!!")
+} else if(hoy.equals(DayOfWeek.MONDAY)) {
+    println("Se acabo el descanso :(")
+} else {
+    println("A trabajar!!!")
+}
+```
+
+Kotlin doesn't incorporate a ternary operator, but you can use if / else.
+```kotlin
+var row = 2
+val bg = if(row%2 == 0) "#ccc" else "#fff"
+```
+
+
+#### when 
+
+```kotlin
+
+```
+
+### Loops
+
+#### For Loop
+
+```kotlin
+
+```
+
+#### While Loop
+
+
+```kotlin
+
+```
