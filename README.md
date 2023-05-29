@@ -198,7 +198,31 @@ var mensaje = when( personasEnFile ) {
 #### For Loop
 
 ```kotlin
+val clientes = arrayOf("juan@123.cl", "ramon@123.cl", "gonzalo@123.cl")
 
+// For in
+for( email in clientes) {
+    println("Enviando correo a ${email} \n")
+}
+
+// Using an index
+for( (index, email) in clientes.withIndex() ) {
+ println("Email cliente #${index+1} ${email} \n")
+}
+```
+
+```kotlin
+/* Steps and ranges */
+
+for (i in 1..5) print(i) // 12345
+
+for (i in 5 downTo 1) print(i) // 54321
+
+for (i in 1..5 step 2) print(i) // 135
+
+for (i in 'a'..'d') print(i) // abcd
+
+for (i in 'a'..'d' step 2) print(i) // ac
 ```
 
 #### While Loop
