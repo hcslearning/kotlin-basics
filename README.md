@@ -153,17 +153,44 @@ if( hoy.equals(DayOfWeek.SUNDAY) ) {
 }
 ```
 
+Kotlin have range syntax:
+
+```kotlin
+val personasEnFile = 51
+if( personasEnFile in 0..50 ) {
+ println("Cerrar y atender a todos")
+} else {
+ println("Cerrar y atender a las primeras 50, al resto entregar número para atención mañana.")
+}
+```
+
 Kotlin doesn't hava a ternary operator, but you can use if / else as an expression.
 ```kotlin
 var row = 2
-val bg = if(row%2 == 0) "#ccc" else "#fff"
+val bg  = if(row%2 == 0) "#ccc" else "#fff"
 ```
 
 
 #### when 
 
-```kotlin
+In the same way that **if/else**, **when** can be used as a statement and as a expression.
 
+```kotlin
+val personasEnFile = 51
+
+// as a statement
+when( personasEnFile ) {
+ 0           -> println("Cerrar")
+ in 1..50    -> println("Cerrar y atender a todos")
+ else        -> println("Cerrar y atender a las primeras 50, al resto entregar número para atención mañana.")
+}
+
+// as an expression
+var mensaje = when( personasEnFile ) {
+    0           -> "Cerrar"
+    in 1..50    -> "Cerrar y atender a todos"
+    else        -> "Cerrar y atender a las primeras 50, al resto entregar número para atención mañana."
+}
 ```
 
 ### Loops
