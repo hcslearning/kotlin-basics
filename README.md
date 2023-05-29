@@ -103,7 +103,12 @@ val resultado = mantisaDec * Math.pow(2.0, exponenteCalc.toDouble()) //10.5
 #### Other Data Types 
 
 ```kotlin
-var nombre:String = "Santiago"
+val nombre:String = "Santiago"
+val multiLine:String = """
+Lorem ipsum
+dolor asit atme
+consequeum
+"""
 val letraC:Char = 'c' // 
 val esDomingo = true // true or false
 ```
