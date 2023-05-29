@@ -138,6 +138,7 @@ El nombre con largo ${nombre.length}
 
 #### if / else 
 
+Traditionally, you can use if / else as a statement:
 ```kotlin
 import java.time.LocalDate
 import java.time.DayOfWeek
@@ -152,7 +153,7 @@ if( hoy.equals(DayOfWeek.SUNDAY) ) {
 }
 ```
 
-Kotlin doesn't incorporate a ternary operator, but you can use if / else.
+Kotlin doesn't hava a ternary operator, but you can use if / else as an expression.
 ```kotlin
 var row = 2
 val bg = if(row%2 == 0) "#ccc" else "#fff"
