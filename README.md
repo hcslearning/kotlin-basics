@@ -46,7 +46,7 @@ b = "hola2"
 
 ### Data Types 
 
-### Integer Numbers
+#### Integer Numbers
 
 ```kotlin
 val edad1:Long  = 35 // 64 bits | -2**63 - 2**63-1 | -9_223_372_036_854_775_808 - 9_223_372_036_854_775_807 
@@ -55,7 +55,7 @@ val edad3:Short = 35 // 16 bits | -2**15 - 2**15-1 |                    -32_768 
 val edad4:Byte  = 35 // 08 bits | -2**7 - 2**7-1   |                       -128 - 127
 ```
 
-### Floating Point Numbers
+#### Floating Point Numbers
 
 ```kotlin
 val peso:Double = 70.5  // MIN: 4.9E-324 | MAX: 1.7976931348623157E308
@@ -68,9 +68,7 @@ System.out.printf( "%.100f", Float.MAX_VALUE)
 
 ```
 
-
-
-#### IEEE754 32 bits (example)
+##### IEEE754 32 bits (example)
 
  1 bit  = sign (1 negative and 0 positive)  
  8 bits = exponent (+ or - 127)  
@@ -100,4 +98,22 @@ for (i in 0 until mantisaBin.length) {
 }
 
 val resultado = mantisaDec * Math.pow(2.0, exponenteCalc.toDouble()) //10.5
+```
+
+#### Other Data Types 
+
+```kotlin
+var nombre:String = "Santiago"
+val letraC:Char = 'c' // 
+val esDomingo = true // true or false
+```
+
+### Syntax for Long Numbers 
+
+For readibility you can write using underscores:
+
+```kotlin
+val oneMillion  = 1_000_000  // integer
+val colorHex    = 0xFF_00_CC // ej: new java.awt.Color(colorHex)
+val dos         = 0b00000000_00000010 // 2 en bytes
 ```
