@@ -227,7 +227,18 @@ for (i in 'a'..'d' step 2) print(i) // ac
 
 #### While Loop
 
-
 ```kotlin
+// while
+var vueltas = 5
+while(vueltas > 0) {
+    println("quedan $vueltas vueltas \n")
+    vueltas--
+}
 
+// do while
+vueltas = 5
+do {
+   println("quedan $vueltas vueltas \n")
+   vueltas--
+} while (vueltas > 0)
 ```
