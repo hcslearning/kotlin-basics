@@ -242,3 +242,98 @@ do {
    vueltas--
 } while (vueltas > 0)
 ```
+
+#### Repeat Loop
+
+```kotlin
+repeat(2) {
+    print("chao ")
+}
+// chao chao 
+```
+
+### Arrays and Collections 
+
+#### Lists 
+
+- List are **ordered** collections of elements 
+- List elements can be accessed by **indices** 
+- Elements can be **repeated** 
+
+```kotlin
+// listOf(...) -> inmutable 
+val accesorios = listOf("fundas", "agua desmineralizada", "cobertor")
+println(accesorios)
+
+// mutableListOf(...) -> mutable 
+val listaSupermercado = mutableListOf("arroz", "huevos", "sal")
+listaSupermercado.remove("sal")
+// Note: with a list defined with val, you can't change which list the variable
+// refers to, but you can change the contents of the list 
+```
+
+#### Arrays 
+
+- arrays store multiple items 
+- arrays elements can be accessed through their indices 
+- arrays elements are mutable 
+- array size is fixed 
+
+```kotlin
+val pets = arrayOf("chola", "nano", "spike")
+println(java.util.Arrays.toString(pets)) 
+```
+
+With an array defined with **val**, you can't change which array the variable refers to, 
+but you can still change the contents of the array 
+
+
+### Null Safety
+
+- In Kotlin, variables cannot be null by default 
+- You can explicitly assign a variable to null using the safe call operator (?)
+- Allow null-pointer exceptions using the !! operator 
+- You can test for null using the elvis (?:) operator 
+
+#### Safe Call Operator (?) 
+
+```kotlin
+var cantidad: Int = null // error, las variables no pueden ser null por defecto
+```
+
+```kotlin
+/* usando safe call operator (?) */
+var cantidad: Int? = null // permite null
+cantidad = cantidad?.dec() // decremento 
+
+/* sin safe call operator*/
+if( cantidad != null ) {
+    cantidad = cantidad.dec() 
+}
+```
+
+#### The !! operator 
+
+- If you sure that a variable won't be null use !! operator 
+- Then the compiler allow you call methods/properties on it 
+- The !! can be throw a NullPointerException if the variable is null 
+- Only use in extremely cases
+
+```kotlin
+val nullableValue: String? = getValueFromExternalSource()
+val nonNullValue: String = nullableValue!! // Assuming you are certain that nullableValue is not null
+```
+
+```kotlin
+val javaObject: JavaObject? = getJavaObject()
+val nonNullValue: String = javaObject!!.getValue() // Assuming you are sure that getValue() never returns null
+```
+
+#### The Elvis operator (?:) 
+
+```kotlin
+var cantidad: Int? = null // null allowed variable
+var mitad: Int = cantidad ?: 0 // whitout elvis op (?:) you get an error 
+mitad /= 2 
+print(mitad)
+```
