@@ -337,3 +337,116 @@ var mitad: Int = cantidad ?: 0 // whitout elvis op (?:) you get an error
 mitad /= 2 
 print(mitad)
 ```
+
+### Functions
+
+- A block of code that performs a specific task 
+- Breaks a large program into smaller modular chunks
+- Declared using fun keyword
+- Can take arguments with either named or default values 
+
+```kotlin
+fun saludar() {
+    print("hola a todos!!!")
+}
+```
+
+If a function doesn't return any useful value, its return type is Unit.
+
+```kotlin
+fun saludar(): Unit {
+    print("hola a todos!!!")
+}
+```
+
+Unit is a type with only one value: Unit.  
+The Unit return type declaration is optional.
+
+#### Parameters
+
+Functions may have:
+
+- Default parameters
+- Required parameters
+- Named arguments
+
+###### Default Parameters
+
+```kotlin
+fun drive(spped: String = "fast") {
+    println("driving ${speed}")
+}
+// ----------------------------------------------------
+drive()                         // driving fast
+drive("slow")                   // driving slow
+drive(speed = "turtle-like")    // driving turtle-like 
+```
+
+###### Required Parameters
+
+If not default is specified for a parameter, the corresponding argument is required.
+
+```kotlin
+fun calcularAreaRectangulo(largo:Int, ancho:Int):Int {
+    return largo * ancho 
+}
+// ----------------------------------------------------
+calcularAreaRectangulo(2)       // error: no value paased for .....
+calcularAreaRectangulo(2, 3)    // 6
+```
+
+###### Named Arguments
+
+To improve readibility, you can use named arguments.
+
+```kotlin
+calcularAreaRectangulo(largo = 2, ancho = 3)    // 6
+```
+
+It's considered good style to put default arguments after positional arguments, 
+that way callers only have to specify the required arguments. 
+
+#### Compact Functions
+
+Compact functions, or single-expression functions, make your code more concise and readable.
+
+```kotlin
+// Complete version
+fun calcularAreaRectangulo(largo:Int, ancho:Int):Int {
+    return largo * ancho 
+}
+// -----------------------------------------------------
+// Compact version
+fun calcularAreaRectangulo(largo:Int, ancho:Int):Int = largo * ancho
+```
+
+
+##### Functions are first-class 
+
+- Kotlin functions can be stored in variables and data structures 
+- They can be passed as arguments to, and returned from, other higher-order functions 
+- You can use hight-order functions to create new "built-in" functions 
+
+###### Lambda functions 
+
+A Lambda is an expression that makes a function that has no name 
+
+```kotlin
+val saludo: () -> Unit          = { println("Hola") }
+val saludo2: (String) -> Unit   = { nombre -> println("Hola ${nombre}")}
+val calcArea: (Int, Int) -> Int = { largo, ancho -> largo * ancho }
+// --------------------------------------------------------------------------
+saludo()        // Hola 
+saludo2("Juan") // Hola Juan
+calcArea(3,2)   // 6
+```
+
+Kotlin can infer the type:
+
+```kotlin
+val saludo2  = { nombre: String -> println("Hola ${nombre}")}
+val calcArea = { largo:Int, ancho:Int -> largo * ancho }
+// --------------------------------------------------------------------------
+saludo2("Juan") // Hola Juan
+calcArea(3,2)   // 6
+```
