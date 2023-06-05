@@ -474,3 +474,38 @@ class Utils {
 val tambienDoble4 = numeros.map(Utils::doble)
 ```
 
+This type of functions is extremly useful when you work with lists.
+
+```kotlin
+val numeros = listOf(5, 10, 12, 20)
+val pares   = numeros.filter { it % 2 == 0 }
+```
+
+```kotlin
+val alumnos  = listOf("Juan", "Pedro", "Jonathan")
+val alumnosJ = alumnos.filter { it[0] == 'J' }
+```
+
+###### Eager and Lazy Filters 
+
+Evaluation of expressions in lists:
+
+- **Eager**: occurs regardless of wheter the result is ever used.
+- **Lazy**: occurs only if necessary at runtime 
+
+**Note**: Lazy evaluation of lists is useful if you don't need the entire result, or if
+if the list is exceptionally large and multiple copies wouldn't fit into RAM.  
+
+Filters are eager by default. A new list is created each time you use a filter.
+```kotlin
+val alumnos  = listOf("Juan", "Pedro", "Jonathan")
+val alumnosJ = alumnos.filter { it[0] == 'J' }
+```
+
+If you want make this **lazy** you need use a Sequence.
+```kotlin
+val alumnos  = listOf("Juan", "Pedro", "Jonathan")
+val alumnosJ = alumnos.asSequence().filter { it[0] == 'J' }.toList()
+```
+
+
