@@ -450,3 +450,27 @@ val calcArea = { largo:Int, ancho:Int -> largo * ancho }
 saludo2("Juan") // Hola Juan
 calcArea(3,2)   // 6
 ```
+
+###### Higher-order functions 
+
+Higher-order functions take functions as parameters, or return a function.
+
+```kotlin
+val numeros = listOf(1, 2, 3)
+val elDoble = numeros.map( {numero -> numero * 2} )
+// when is the last parameter is not necesary parenthesis
+val tambienDoble = numeros.map { numero -> numero * 2}
+// when it's only one argument, you can use "it"
+val tambienDoble2 = numeros.map { it * 2}
+// either you can pass like a variable 
+val elDobleFn: (Int) -> Int = { numero -> numero * 2 } 
+val tambienDoble3 = numeros.map(elDobleFn)
+// if it's not a Lambda you can use :: operator 
+class Utils {
+    companion object { // it's like a static member from other languages
+        fun doble(numero:Int):Int = numero * 2 
+    }
+}
+val tambienDoble4 = numeros.map(Utils::doble)
+```
+
